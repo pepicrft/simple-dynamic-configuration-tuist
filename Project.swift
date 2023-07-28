@@ -4,14 +4,14 @@ func frameworkNames() -> [any StringProtocol] {
     if case let .string(frameworkNames) = Environment.frameworkNames {
         return frameworkNames.split(separator: ",")
     } else {
-        return ["JoanFramework"]
+        return ["Default"]
     }
 }
 
 let targets = frameworkNames().map { frameworkName in
-    Target(name: "\(frameworkName)", platform: .macOS, product: .framework, bundleId: "com.joan.\(frameworkName)", sources: [
+    Target(name: "\(frameworkName)", platform: .macOS, product: .framework, bundleId: "io.tuist.\(frameworkName)", sources: [
         "Sources/**/*.swift"
     ])
 }
 
-let project = Project(name: "Joan", targets: targets)
+let project = Project(name: "Tuist", targets: targets)
